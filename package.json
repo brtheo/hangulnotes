@@ -1,0 +1,16 @@
+{
+  "name": "HangulNotes",
+  "version": "0.1.0",
+  "description": "notes taking app with roman to hangul transcription support.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "~1.6.2"
+  },
+  "dependencies": {
+    "html-pdf": "^2.1.0",
+    "pug": "^2.0.0-rc.1"
+  }
+}

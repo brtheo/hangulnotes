@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<meta charset="UTF-8">
+    	<title>Hangul Notes</title>
+		<script src="./lib/codemirror.js"></script>
+		<script src="./lib/codemirror-pug.js"></script>
+		<link rel="stylesheet" href="./lib/codemirror.css">
+		<link rel="stylesheet" href="./lib/theme.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto" rel="stylesheet">
+		<style>
+            .center {text-align: center;}
+			.w,.word,.m,.mot {display: inline;}
+			.w:after, .word:after, .m:after, .mot:after { content: "\0000a0";}
+			.sec, .section {border-bottom: 2px #e0e0e0 solid; border-left: 2px #e0e0e0 solid; margin: 10px; padding: 10px;}
+            body {display: flex; flex-direction: row; align-content: space-around; justify-content: space-around; max-height: 100vh; overflow-y: hidden; font-family: 'Arial'; font-size:20px; margin: 0;}
+            .edit, #preview {width: 48%; min-height: 100vh;}
+			#preview { padding: 10px;}
+			#command-bar {width: 4%; display: flex; flex-direction: column; align-content: flex-start; justify-content: flex-start;}
+			button:focus {outline:0;}
+			button { cursor: pointer;transition: background 0.2s;background: white;height: 65px;padding: 0; border: none;}
+			button:hover {background: #e0e0e0;}
+			svg {height: 40px;width: 40px;fill: #303030; margin: 10px 0;}
+			.CodeMirror {font-family: 'Roboto Mono'; height: 100vh; overflow-y: scroll;}
+			input[type="text"] {width: 100%; margin-bottom: 10px;}
+        </style>
+	</head>
+	<body>
+		<div id="command-bar">
+			<button id="open"><svg><use xlink:href="./icons.svg#ic-open"></use></svg></button>
+			<button id="savetohtml"><svg><use xlink:href="./icons.svg#ic-html"></use></svg></button>
+			<button id="savetopdf"><svg><use xlink:href="./icons.svg#ic-pdf"></use></svg></button>
+		</div>
+		<div class="edit">
+			<input type="text" id="file-name" placeholder="Nom du fichier">
+			<textarea id="pug-input" ></textarea>
+		</div>
+		<div id="preview"></div>
+	</body>
+
+	<script>
+    	require('./src/renderer.js')
+	</script>
+</html>
+<!--onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}"
